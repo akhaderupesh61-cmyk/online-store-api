@@ -18,6 +18,8 @@ app.use("/api/orders", orderRoutes);
 
 // Level 5 APIs
 
+
+// server listening
 app.listen(PORT, () => {
     console.log(`Server is started on port: ${PORT}`);
 });

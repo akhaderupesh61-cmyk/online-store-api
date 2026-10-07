@@ -3,7 +3,6 @@ const db = require("../config/db")
 // Level 2 — Products & Filtering //
 
 // API 6 — Get All Products
-
 const getAllProducts = async (req, res) => {
     try {
         let query = `select * from products`;
@@ -43,7 +42,6 @@ const getProductsByCategory = async (req, res) => {
 };
 
 // API 8 — Search Products
-
 const searchProductsByName = async (req, res) => {
     try {
         let name = req.query.product_name;
@@ -64,13 +62,15 @@ const searchProductsByName = async (req, res) => {
 };
 
 // API 9 — Products by Price Range
-
 const productsByPriceRange = async (req, res) => {
     try {
         const { min_price, max_price } = req.query
-        let query = `select * from products
-    where price between ? and ?`;
-        let result = await db.query(query, [min_price, max_price])
+        let query = `select * from products `;
+        if(min_price>0 || max_price>0){
+            query+= `where price between ${min_price} and ${max_price}`;
+        }
+
+        let result = await db.query(query)
         console.log("get result:", result[0]);
         res.json({
             success: true,
@@ -85,8 +85,8 @@ const productsByPriceRange = async (req, res) => {
 };
 
 // API 10 — Products Above Price
-
 const productsAbovePrice = async (req, res) => {
+    // 
     try {
         let price = req.params.price
         let query = `select * from products where 
@@ -126,7 +126,6 @@ const sortProductsByPrice = async (req, res) => {
 };
 
 // API 12 — Get Unique Categories
-
 const getUniqueCategories = async (req, res) => {
     try {
         let query = `select distinct category from products`;
@@ -145,7 +144,6 @@ const getUniqueCategories = async (req, res) => {
 };
 
 // API 13 — Products Out of Stock 
-
 const productsOutOfStock = async (req, res) => {
     try {
         let query = `select * from products
@@ -190,7 +188,6 @@ const getProductStats = async (req, res) => {
 };
 
 // API 15 — Category Statistics
-
 const getCategoryStats = async (req, res) => {
     try {
         let query = `select category,
@@ -216,7 +213,6 @@ const getCategoryStats = async (req, res) => {
 
 
 // API 16 — Categories with More Than 2 Products
-
 const getProductsByCategoryWithCount = async (req, res) => {
     try {
         let query = `select category, 
@@ -240,8 +236,6 @@ const getProductsByCategoryWithCount = async (req, res) => {
 
 
 // API 17 — Categories by Minimum Average Price
-
-
 const getCategoriesByMinimumAveragePrice = async (req, res) => {
     try {
         let price = req.query.minimum_price;
@@ -264,7 +258,6 @@ const getCategoriesByMinimumAveragePrice = async (req, res) => {
 };
 
 // API 18 — Category Price Range
-
 const getCategoryPriceRange = async (req, res) => {
     try {
 
@@ -312,7 +305,6 @@ const getCategoriesWithHighStock = async (req, res) => {
 };
 
 // API 20 — Product Count by Category
-
 const getProductCountByCategory = async (req, res) => {
     try {
 

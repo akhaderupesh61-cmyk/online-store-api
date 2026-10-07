@@ -3,7 +3,6 @@ const db = require("../config/db")
 // Level 4 — Orders & Order Filtering //
 
 // API 21 — Get All Orders
-
 const getAllOrders = async (req, res) => {
     try {
         let query = `select * from orders`;
@@ -22,7 +21,6 @@ const getAllOrders = async (req, res) => {
 };
 
 // API 22 — Get Order by ID
-
 const getOrderById = async (req, res) => {
     try {
         let id = Number(req.params.id);
@@ -43,7 +41,6 @@ const getOrderById = async (req, res) => {
 };
 
 // API 23 — Get Orders by Status
-
 const getOrdersByStatus = async (req, res) => {
     try {
         let status = req.params.status;
@@ -64,7 +61,6 @@ const getOrdersByStatus = async (req, res) => {
 };
 
 // API 24 — Get Orders by Customer
-
 const getOrdersByCustomer = async (req, res) => {
     try {
         let customer_id = req.params.customer_id;
@@ -86,7 +82,6 @@ const getOrdersByCustomer = async (req, res) => {
 
 
 // API 25 — Orders by Date Range
-
 const getOrdersByDateRange = async (req, res) => {
     try {
         const { start_date, end_date } = req.query;
@@ -129,7 +124,6 @@ const getOrdersSortedByDate = async (req, res) => {
 };
 
 // API 27 — Order Status Statistics
-
 const getOrderStatusStats = async (req, res) => {
     try {
 

@@ -18,10 +18,8 @@ router.get("/", getAllOrders);
 // API 23 — Get Orders by Status
 router.get("/status/:status", getOrdersByStatus);
 
-
 // API 25 — Orders by Date Range
 router.get("/date-range", getOrdersByDateRange);
-
 
 // API 26 — Orders Sorted by Date
 router.get("/sort", getOrdersSortedByDate);
@@ -37,8 +35,5 @@ router.get("/customer/:customer_id", getOrdersByCustomer);
 
 // API 22 — Get Order by ID
 router.get("/:id", getOrderById);
-
-
-
 
 module.exports = router;

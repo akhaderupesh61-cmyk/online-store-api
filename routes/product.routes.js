@@ -22,7 +22,6 @@ const { getAllProducts,
 // API 6 — Get All Products
 router.get("/", getAllProducts);
 
-
 // API 7 — Get Products by Category
 router.get("/category/:category", getProductsByCategory);
 

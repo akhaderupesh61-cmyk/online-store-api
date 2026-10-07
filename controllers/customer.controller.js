@@ -4,7 +4,6 @@ const db = require("../config/db");
 
 
 // API 1 — Get All Customers
-
 const getAllCustomers = async (req, res) => {
     try {
         let query = "select * from customers";
@@ -23,7 +22,6 @@ const getAllCustomers = async (req, res) => {
 };
 
 // API 2 — Get Customer by ID
-
 const getCustomerById = async (req, res) => {
     try {
         let id = Number(req.params.id);
@@ -43,7 +41,6 @@ const getCustomerById = async (req, res) => {
 };
 
 //API 3 — Get Customers by City
-
 const getCustomersByCity = async (req, res) => {
     try {
         let city = req.params.city;
@@ -63,7 +60,6 @@ const getCustomersByCity = async (req, res) => {
 };
 
 // API 4 — Search Customers by Name
-
 const searchCustomersByName = async (req, res) => {
     try {
         let name = req.params.name;
@@ -91,7 +87,7 @@ const getUniqueCities = async (req, res) => {
         console.log("get result:", result[0]);
         res.json({
             success: true,
-            data: result[0]
+            data: result[0].map(e=>e.city)
         });
     } catch (error) {
         console.log("get error:", error)

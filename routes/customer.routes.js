@@ -12,14 +12,11 @@ const { getAllCustomers,
 // API 1 — Get All Customers
 router.get("/", getAllCustomers);
 
-
-// // API 3 — Get Customers by City
+// API 3 — Get Customers by City
 router.get("/city/:city", getCustomersByCity);
-
 
 // API 4 — Search Customers by Name
 router.get("/search/:name", searchCustomersByName);
-
 
 // API 5 — Get Unique Cities
 router.get("/cities", getUniqueCities);
